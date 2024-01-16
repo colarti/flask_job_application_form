@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1 class="mt-4 mb-4">Job Application Form</h1>
-            <form>
+            <form method="post">
                 <div class="form-group mb-4">
                     <label for="first_name">First Name:</label>
                     <input class="form-control" type="text" id="'first_name" name="first_name" required>
@@ -29,24 +29,33 @@
                 <div class="form-group mb-4">
                     <label>Current Occupation:</label>
                     <br>
-                    <div class='btn-group-vertical' id="occuption">
-                        <input class="'btn-check form-control" type="radio" id="employed" name="occuption" required>
+                    <div class='btn-group-vertical' id="occupation">
+                        <input class="'btn-check form-check-input" type="radio" id="employed" name="occupation" value='employed' required>
                         <label class="btn btn-outline-secondary" for="employed">Employed</label>
         
-                        <input class="'btn-check form-control" type="radio" id="not_employed" name="occuption" required>
+                        <input class="'btn-check form-check-input" type="radio" id="not_employed" name="occupation" value='not employed' required>
                         <label class="btn btn-outline-secondary" for="not_employed">Not Employed</label>
         
-                        <input class="'btn-check form-control" type="radio" id="self_employed" name="occuption" required>
+                        <input class="'btn-check form-check-input" type="radio" id="self_employed" name="occupation" value="self employed" required>
                         <label class="btn btn-outline-secondary" for="self_employed">Self Employed</label>
         
-                        <input class="'btn-check form-control" type="radio" id="student" name="occuption" required>
+                        <input class="'btn-check form-check-input" type="radio" id="student" name="occupation" value="student">
                         <label class="btn btn-outline-secondary" for="student">Student</label>
                     </div>
                 </div>
 
                 <div>
-                    <button class="btn btn-secondary mb-4" type="'button">Submit</button>
+                    <button class="btn btn-secondary mb-4" type="'submit">Submit</button>
                 </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
             </form>
         </div>
 
